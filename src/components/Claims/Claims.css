@@ -1,0 +1,85 @@
+.claims-container {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .winning-bets-section h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .bet-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .bet-icon {
+    background-color: #e0e0e0;
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .bet-info {
+    flex-grow: 1;
+    margin-left: 15px;
+  }
+  
+  .bet-question {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .bet-details {
+    font-size: 14px;
+    color: #6c757d;
+    margin: 5px 0 0;
+  }
+  
+  .claim-button {
+    padding: 8px 16px;
+    background-color: #e9ecef;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .claim-button:hover {
+    background-color: #ced4da;
+  }
+  
+  .load-more {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .load-more-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #212529;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .load-more-button:hover {
+    background-color: #343a40;
+  }
+  

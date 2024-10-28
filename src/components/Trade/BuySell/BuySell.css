@@ -1,0 +1,217 @@
+.home-containerLogin {
+    background-color: #fff; 
+    color: #2c3e50; 
+    border-radius: 10px;padding: 30px;
+    font-family: Arial, sans-serif;
+    margin-top: 70px;
+    max-width: 700px;
+    width: 500px;
+
+  }
+  .trade{
+    color: black; 
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 8px;
+    font-weight: 600px;
+  }
+  /* Tabs */
+  .tabsLogin {
+    display: flex;
+    /* Remove space between tabs */
+    gap: 0;
+    /* Align items to the left; change to 'center' if you prefer centered tabs */
+    justify-content: flex-start;
+    /* Remove bottom margin to reduce space below tabs */
+    margin-bottom: 10px;
+    margin-top: 12px;
+
+    /* Optional: Add a border or shadow to the tab container for better separation */
+    border-bottom: 2px solid #ddd;
+}
+
+.tab-buttonLogin {
+    background-color: #e0e8ed; 
+    color: #2c3e50;
+    padding: 12px 113px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    /* Remove individual border-radius to handle via first and last child */
+    border-radius: 0;
+    /* Allow buttons to size based on content */
+    width: auto;
+    text-align: center;
+    /* Remove top margin to align tabs properly */
+    margin-top: 0;
+    /* Add border to create a tab effect */
+    border: 1px solid #ccc;
+    border-bottom: none; /* Remove bottom border to connect with container */
+    background-color: #f9f9f9;
+    transition: background-color 0.3s, color 0.3s;
+    /* Prevent buttons from stretching */
+    flex: 0 0 auto;
+}
+
+.tab-buttonLogin:first-child {
+    /* Rounded top-left corner for the first tab */
+    border-top-left-radius: 5px;
+}
+
+.tab-buttonLogin:last-child {
+    /* Rounded top-right corner for the last tab */
+    border-top-right-radius: 5px;
+}
+
+.tab-buttonLogin.active {
+    background-color: #3498db;
+    color: white;
+    /* Active tab appears connected to content */
+    border-bottom: 2px solid white;
+    /* Optional: Add a slight box-shadow for depth */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Optional: Add hover effects for better interactivity */
+.tab-buttonLogin:hover {
+    background-color: #d0d8df;
+}
+
+.tab-buttonLogin.active:hover {
+    background-color: #2980b9;
+}
+
+  
+  .outcome-sectionLogin {
+    margin-bottom: 15px;
+  }
+  
+  .outcome-headerLogin {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: black; 
+    font-weight: bold;
+  }
+  
+  .iconsLogin {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .iconLogin {
+    cursor: pointer;
+    color: #7f8c8d; 
+  }
+  
+  .outcome-optionsLogin {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+   
+  }
+  
+  .outcome-buttonLogin {
+    background-color: #e0e8ed;
+    color: #2c3e50;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    flex: 1;
+    margin-right: 10px;
+    text-align: center;
+  }
+  
+  .outcome-buttonLogin:last-child {
+    margin-right: 0;
+  }
+  
+  .outcome-buttonLogin.selected {
+    background-color: #2ecc71; 
+    color: white;
+  }
+  
+  .outcome-buttonLogin.selected-no {
+    background-color: #e74c3c; 
+    color: white;
+  }
+  
+  .amount-sectionLogin {
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: black; 
+    font-weight: bold;
+  }
+  
+  .amount-buttonsLogin {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    background-color: #e0e8ed; 
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  .amount-buttonLogin {
+    background-color: #3498db; 
+    color: white;
+    padding: 9px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  
+  .amount-inputLogin {
+    background-color: white;
+    border: 1px solid #bdc3c7; 
+    color: #2c3e50;
+    text-align: center;
+    width: 173px;
+    font-size: 18px;
+    border-radius: 4px;
+    height: 34px;
+  }
+  
+  .error-messageLogin {
+    color: #e74c3c;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  
+  .login-buttonLogin {
+    background-color: #3498db; 
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .login-buttonLogin:hover {
+    background-color: #2980b9; 
+  }
+  
+  .info-sectionLogin {
+    font-size: 14px;
+    color: black; 
+    font-weight: 600;
+  }
+  
+  .blue-value {
+    color: #3498db;
+    font-weight: 600; 
+  }
+  
+  .green-value {
+    color: #2ecc71;
+    font-weight: 600; 
+  }
+  

@@ -1,0 +1,109 @@
+/* Style for the header container */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: linear-gradient(90deg, rgba(255, 105, 180, 0.8), rgba(72, 61, 139, 0.8)); /* Vivid gradient */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .header:hover {
+    background: linear-gradient(90deg, rgba(72, 61, 139, 0.8), rgba(255, 105, 180, 0.8)); /* Reverse colors on hover */
+  }
+  
+  .header-left h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .header-title {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .nav-link {
+    font-size: 16px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.9);
+    padding-bottom: 5px;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .nav-link:hover {
+    color: rgba(173, 216, 230, 0.9); /* Light blue */
+  }
+  
+  .active-link {
+    border-bottom: 3px solid rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 1);
+    font-weight: 600;
+  }
+  
+  .header-center {
+    display: flex;
+    gap: 40px;
+  }
+  
+  /* Wallet address styling */
+  .wallet-address {
+    background-color: rgba(72, 61, 139, 0.8); /* Dark Slate Blue */
+    color: rgba(255, 255, 255, 0.9);
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 182, 193, 0.8); /* Light pink border */
+    font-weight: 550;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .wallet-address:hover {
+    background-color: rgba(123, 104, 238, 0.8); /* Medium Slate Blue */
+  }
+  
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .connect-button {
+    background-color: rgba(255, 182, 193, 0.8); /* Light pink */
+    border: gray;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 550;
+    color: rgba(72, 61, 139, 0.8);
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .connect-button:hover {
+    background-color: rgba(238, 130, 238, 0.8); /* Violet */
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .search-icon {
+    cursor: pointer;
+    background-color: rgba(255, 182, 193, 0.8);
+    padding: 2px 4px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .search-icon:hover {
+    background-color: rgba(238, 130, 238, 0.8); /* Violet */
+  }
+  
+  .profile-icon {
+    color: rgba(255, 255, 255, 0.9); /* White */
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .profile-icon:hover {
+    color: rgba(173, 216, 230, 0.9); /* Light blue */
+  }
+  

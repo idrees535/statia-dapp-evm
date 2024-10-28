@@ -1,0 +1,96 @@
+.bets-container {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* Tabs */
+  .tabs {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+  }
+  
+  .tab-button {
+    background-color: transparent;
+    border: none;
+    font-size: 14px;
+    padding: 4px 13px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #28a745;
+  }
+  
+  .tab-button.active {
+    border-bottom: 3x solid black;
+    color: black;
+  }
+  
+ /* Bets Table */
+/* Bets Table */
+.bets-table {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 900px;
+    border: 1px solid #dee2e6; /* Optional: add outer border around table */
+    border-radius: 8px; /* Optional: rounded corners */
+  }
+  
+  .bets-table table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+  
+  .bets-table th,
+  .bets-table td {
+    text-align: left;
+    padding: 15px;
+    border-bottom: 1px solid #dee2e6; /* Only add border to the bottom of each row */
+    width: calc(100% / 6); /* Equal width for all columns */
+    max-width: 180px; /* Set max-width to avoid overflow */
+  }
+  
+  .bets-table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    font-size: 14px ;
+    color: black;
+  }
+  
+  .bets-table td {
+    vertical-align: middle;
+    font-size: 14px ;
+    color: black;
+  }
+  
+  .bets-table tr:last-child td {
+    border-bottom: none;
+     /* Remove the bottom border from the last row */
+  }
+  
+  .view-button {
+    background-color: transparent;
+    border: none;
+    color: #28a745;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .view-button:hover {
+    text-decoration: underline;
+  }
+  
+  /* Account Balance */
+  .account-balance {
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: medium;
+  }
+  

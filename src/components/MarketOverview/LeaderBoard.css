@@ -1,0 +1,131 @@
+.leaderboard-container {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .prediction-progress {
+    margin-bottom: 20px;
+  }
+  
+  .progress-bar {
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    height: 8px;
+    width: 100%;
+    position: relative;
+  }
+  
+  .progress-bar-filled {
+    background-color: #007bff;
+    height: 8px;
+    border-radius: 8px 0 0 8px;
+  }
+  
+  .bet-summary {
+    color: #6c757d;
+    font-size: 14px;
+  }
+  .chances{
+    font-size: 18px;
+  }
+  .market-bet {
+    margin-bottom: 20px;
+  }
+  
+  .market-bet h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .bet-options {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .bet-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+  }
+  
+  .bet-label {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .odds-text {
+    color: #6c757d;
+    font-size: 14px;
+  }
+  
+  .bet-amount {
+    font-weight: bold;
+  }
+  
+  .recent-bets {
+    margin-bottom: 20px;
+  }
+  
+  .recent-bets h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .recent-bets ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .recent-bets li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    background-color: #fff;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .recent-bet-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .recent-anonymous {
+    font-weight: medium;
+  }
+  
+  .recent-choice {
+    font-weight: medium;
+    font-size: 14px;
+    color: #6c757d;
+    font-size: 14px;
+  }
+  
+  .bet-now-container {
+    text-align: center;
+  }
+  
+  .bet-now-button {
+    padding: 12px 72px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .bet-now-button:hover {
+    background-color: #0056b3;
+  }
+  

@@ -1,0 +1,7 @@
+.login-container {
+  display: flex;
+  height: 100vh; 
+  display: flex;
+  justify-content: center;/* optional: set full height if needed */
+  background: linear-gradient(90deg, rgba(255, 105, 180, 0.8), rgba(72, 61, 139, 0.8)); /* Vivid gradient */
+}

@@ -1,0 +1,21 @@
+.home-containerChart {
+    padding: 20px;
+    background-color: #FFF; 
+    color: #2c3e50; 
+    border-radius: 10px;
+    max-width: 100%;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+  .yes-styling{
+    font-size: larger;
+    font-weight: 700;
+    color: blueviolet;
+    padding-left: 12px;
+  }
+  .chance-styling{
+    font-weight: 700;
+    color: rgb(45, 20, 235);
+    padding-left: 12px;
+    font-size: 26px;
+  }
