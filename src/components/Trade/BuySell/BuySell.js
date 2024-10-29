@@ -22,20 +22,28 @@ function BuySell() {
   const { walletAddress, handleConnectWallet } = useWallet();
   const query = new URLSearchParams(location.search);
 
-  const address = query.get('address') 
+  const address = query.get('address')
   const MARKET_ADDRESS = address;
   const TOKEN_ADDRESS = process.env.REACT_APP_TOKEN_ADDRESS;
+
+  // State for Popup
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupContent, setPopupContent] = useState({
+    numShares: 0,
+    txHash: '',
+    actionType: ''
+  });
 
 
 
   // Retrieve query parameters
-  
+
 
   useEffect(() => {
     loadContracts();
-  }, []); 
+  }, []);
 
-  const getMarketPrices = async () =>{
+  const getMarketPrices = async () => {
     const provider = new BrowserProvider(window.ethereum);
     await provider.send("eth_requestAccounts", []);
     const signer = await provider.getSigner();
@@ -54,16 +62,16 @@ function BuySell() {
     // const price_1 = await marketContract.getPrice(1);
     // const formattedPriceYes = formatUnits(price_0, 10);
     // const formattedPriceNo = formatUnits(price_1, 10);
-    
+
     // setPriceYes(formattedPriceYes);
     // setPriceNo(formattedPriceNo);
-    
+
     // console.log('Price Yes:', formattedPriceYes);
     // console.log('Price No:', formattedPriceNo);
   }
   useEffect(() => {
     getMarketPrices();
-  }, [address]); 
+  }, [address]);
 
   const loadContracts = async () => {
     if (!window.ethereum) {
@@ -89,42 +97,55 @@ function BuySell() {
       const { marketContract, tokenContract } = await loadContracts();
       const outcomeIndex = selectedOutcome === 'Yes' ? 0 : 1;
 
+      let netCost;
+      let tx;
+      let actionType = activeTab;
+      let numShares = amount;
+      let txHash = '';
+      //let receipt ='';
 
-      // const netCost = await marketContract.estimateCost(outcomeIndex, amount);
-      // console.log('netCost',formatUnits(netCost,18))
-      // setNetAmount(formatUnits(netCost));
-      // const approveTx = await tokenContract.approve(MARKET_ADDRESS, netCost);
-      // await approveTx.wait();
-      // const tx = await marketContract.buyShares(outcomeIndex, amount);
-      // await tx.wait();
+      if (activeTab === 'Buy') {
+        netCost = await marketContract.estimateCost(outcomeIndex, amount);
+        setNetAmount(formatUnits(netCost, 18));
 
-      // Estimate cost if buying, or fetch the user's share amount if selling
-    let netCost;
-    if (activeTab === 'Buy') {
-      netCost = await marketContract.estimateCost(outcomeIndex, amount);
-      setNetAmount(formatUnits(netCost, 18));
+        // Approve the transaction
+        const approveTx = await tokenContract.approve(MARKET_ADDRESS, netCost);
+        await approveTx.wait();
 
-      // Approve the transaction
-      const approveTx = await tokenContract.approve(MARKET_ADDRESS, netCost);
-      await approveTx.wait();
+        // Buy shares
+        tx = await marketContract.buyShares(outcomeIndex, amount);
+        //const receipt = await tx.wait();
+        console.log("Shares bought successfully!");
+      }
+      else {
+        // Sell shares
+        tx = await marketContract.sellShares(outcomeIndex, amount);
+        //const receipt = await tx.wait();
 
-      // Buy shares
-      const tx = await marketContract.buyShares(outcomeIndex, amount);
-      await tx.wait();
-      console.log("Shares bought successfully!");
-    } 
-    else {
-      // If selling, no need for approval (assuming you're receiving payment)
-      netCost = await marketContract.sellShares(outcomeIndex, amount);
-      setNetAmount(formatUnits(netCost, 18));
+        console.log("Shares sold successfully!");
+      }
 
-      // Sell shares
-      const tx = await marketContract.sellShares(outcomeIndex, amount);
-      await tx.wait();
-      console.log("Shares sold successfully!");
+      const receipt = await tx.wait();
+      console.log('tx receipt:', receipt)
+      txHash = receipt.transactionHash;
+      console.log(`${activeTab} transaction successful!`);
+
+      // Set popup content
+      setPopupContent({
+        numShares,
+        txHash,
+        actionType
+      });
+
+      setShowPopup(true);
+      // Optionally, refresh the market prices
+      // getMarketPrices();
+
+      // Reset the amount
+      //setAmount(0);
+
+
     }
-
-  }
     catch (error) {
       setError("Number of shares must be greater than 0");
     }
@@ -134,8 +155,42 @@ function BuySell() {
     const value = Math.max(0, parseInt(e.target.value) || 0);
     setAmount(value);
   };
+
+  // Function to close the popup
+  const closePopup = () => {
+    setShowPopup(false);
+    setPopupContent({
+      numShares: 0,
+      txHash: '',
+      actionType: ''
+    });
+  };
+
+
   return (
     <div>
+
+      {/* Popup Modal */}
+      {showPopup && (
+        <div className="popup-overlay" onClick={closePopup}>
+          <div className="popup-content" onClick={(e) => e.stopPropagation()}>
+            <button className="popup-close-btn" onClick={closePopup}>X</button>
+            <h2>Transaction Successful!</h2>
+            <p><strong>Action:</strong> {popupContent.actionType}</p>
+            <p><strong>Number of Shares:</strong> {popupContent.numShares}</p>
+            <p><strong>Transaction Hash:</strong>
+              {popupContent.txHash ? (
+                <a href={`https://sepolia.etherscan.io/tx/${popupContent.txHash}`} target="_blank" rel="noopener noreferrer">
+                  {popupContent.txHash.slice(0, 10)}...
+                </a>
+              ) : (
+                'N/A'
+              )}
+            </p>
+          </div>
+        </div>
+      )}
+
 
       {/* Add your trading logic here */}
 
@@ -167,7 +222,7 @@ function BuySell() {
               className={`outcome-buttonLogin ${selectedOutcome === 'Yes' ? 'selected' : ''}`}
               onClick={() => setSelectedOutcome('Yes')}
             >
-              Yes {priceYes?? '0.00'}$
+              Yes {priceYes ?? '0.00'}$
             </button>
             <button
               className={`outcome-buttonLogin ${selectedOutcome === 'No' ? 'selected-no' : ''}`}
