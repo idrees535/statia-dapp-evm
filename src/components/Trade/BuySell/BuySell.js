@@ -115,19 +115,20 @@ function BuySell() {
         // Buy shares
         tx = await marketContract.buyShares(outcomeIndex, amount);
         //const receipt = await tx.wait();
-        console.log("Shares bought successfully!");
+        //console.log("Shares bought successfully!");
       }
       else {
         // Sell shares
         tx = await marketContract.sellShares(outcomeIndex, amount);
         //const receipt = await tx.wait();
 
-        console.log("Shares sold successfully!");
+        //console.log("Shares sold successfully!");
       }
 
       const receipt = await tx.wait();
       console.log('tx receipt:', receipt)
-      txHash = receipt.transactionHash;
+      txHash = receipt.hash;;
+      console.log('txHash:', txHash)
       console.log(`${activeTab} transaction successful!`);
 
       // Set popup content
@@ -165,7 +166,6 @@ function BuySell() {
       actionType: ''
     });
   };
-
 
   return (
     <div>
