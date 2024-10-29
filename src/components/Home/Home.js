@@ -8,6 +8,7 @@ import './Home.css';
 import MarketFactoryABI from '../../contracts/MarketFactory.json';
 import LMSRPredictionMarketABI from '../../contracts/LMSRPredictionMarket.json';
 import { textChangeRangeIsUnchanged } from 'typescript';
+import Popup from '../Popup/Popup'; 
 
 function NodesTab() {
   return <p></p>;
@@ -34,8 +35,9 @@ function Home() {
   const [selectedOption, setSelectedOption] = useState(null);
   const [selectedMarketAddress, setSelectedMarketAddress] = useState(null); // New state
   const [claimPayout, setClaimPayout] = useState(null); // New state
-  //console.log("claimPayout", claimPayout)
-  //console.log("selectedMarketAddressof claim", selectedMarketAddress)
+
+  const [showPopup, setShowPopup] = useState(false);
+  const [txHash, setTxHash] = useState('');
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -69,14 +71,21 @@ function Home() {
         console.log("Market closed successfully.");
 
         const tx = await marketContract.setOutcome(selectedOption);
-        await tx.wait(); // Wait for the transaction to be mined
+        const receipt = await tx.wait();
+        console.log("Set Outcome Transaction receipt:", receipt);
+
+        // Capture the transaction hash
+        const txHash = receipt.hash;
+        console.log("SetOutcome Transaction Hash:", txHash);
         console.log(textChangeRangeIsUnchanged)
+
+        setTxHash(txHash);
+        setShowPopup(true);
 
         console.log(`Resolution Outcome set to: ${selectedOption === 1 ? 'Yes' : 'No'}`);
 
-        // Optionally, refresh the markets or provide user feedback
         getActiveMarkets(); // Refresh the market list if necessary
-        alert(`Resolution Outcome set to: ${selectedOption === 1 ? 'Yes' : 'No'}`);
+        //alert(`Resolution Outcome set to: ${selectedOption === 1 ? 'Yes' : 'No'}`);
       } catch (error) {
         console.error("Error setting outcome:", error);
         alert("There was an error setting the resolution outcome. Please try again.");
@@ -100,9 +109,19 @@ function Home() {
       const signer = await provider.getSigner();
       const market = new Contract(selectedMarketAddress, LMSRPredictionMarketABI, signer);
 
-      await market.claimPayout();
+      const tx = await market.claimPayout();
+      const receipt = await tx.wait();
+      console.log("Set Outcome Transaction receipt:", receipt);
+
+        // Capture the transaction hash
+      const txHash = receipt.hash;
+      console.log("Claimm Transaction Hash:", txHash);
+      console.log(textChangeRangeIsUnchanged)
+
+      setTxHash(txHash);
+      setShowPopup(true);
       console.log("Payout claimed for:", selectedMarketAddress);
-      alert("Payout claimed successfully!");
+      //alert("Payout claimed successfully!");
       setSelectedMarketAddress(null); // Reset state after claiming
     } catch (error) {
       console.error("Error claiming payout:", error);
@@ -299,6 +318,12 @@ function Home() {
 
   return (
     <div className="home-containerhaha">
+      {/* Popup Modal */}
+    <Popup
+      show={showPopup}
+      onClose={() => setShowPopup(false)}
+      txHash={txHash}
+    />
       {/* Add Market Button */}
       <button className="add-market-btn" onClick={openModal}>
         <FaPlus className="add-icon" /> Create New Market
